@@ -118,7 +118,8 @@ const Layout = () => {
           items: [
             { name: 'My Goals', href: '/performance/goals', icon: Target },
             { name: 'Self-Assessment', href: '/performance/self-assessment', icon: Star },
-            { name: 'My Performance Review', href: '/performance/my-review', icon: CheckCircle },
+            // Will use later - Manager Evaluation not yet implemented
+            // { name: 'My Performance Review', href: '/performance/my-review', icon: CheckCircle },
           ]
         },
         {
@@ -227,7 +228,8 @@ const Layout = () => {
           items: [
             { name: 'Performance Cycles', href: '/performance/cycles', icon: Target },
             { name: 'Goals / KRAs', href: '/performance/goals', icon: Target },
-            { name: 'Performance Reviews', href: '/performance/reviews', icon: CheckCircle },
+            // Will use later - Manager Evaluation not yet implemented
+            // { name: 'Performance Reviews', href: '/performance/reviews', icon: CheckCircle },
           ]
         },
         {
