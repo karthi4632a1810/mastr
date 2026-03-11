@@ -1,0 +1,8 @@
+# Netlify build config for HRMS frontend (Vite app lives in frontend/)
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
