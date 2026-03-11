@@ -1,0 +1,113 @@
+# Dependencies
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
+backend/dist/
+backend/build/
+frontend/dist/
+frontend/build/
+frontend/.vite/
+*.tsbuildinfo
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+backend/.env
+backend/.env.local
+frontend/.env
+frontend/.env.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+backend/python-face-service/venv/
+backend/python-face-service/env/
+backend/python-face-service/.venv/
+# Ignore wheel files, but allow the insightface wheel file
+backend/python-face-service/*.whl
+!backend/python-face-service/insightface-0.7.3-cp312-cp312-win_amd64.whl
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Uploads and user-generated content
+backend/uploads/*
+!backend/uploads/.gitkeep
+*.tmp
+*.temp
+
+# Database
+# SQLite files (if you add SQLite support in the future)
+*.db
+*.sqlite
+*.sqlite3
+# MongoDB local data (if using local MongoDB)
+data/
+mongodb-data/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# IDE and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# Cache
+*.cache
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*~
+
+# Optional: Keep uploads directory structure
+!backend/uploads/.gitkeep

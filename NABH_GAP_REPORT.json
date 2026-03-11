@@ -1,0 +1,371 @@
+{
+  "reportMetadata": {
+    "reportDate": "2024",
+    "systemName": "PRIXO HRMS",
+    "complianceStandard": "NABH",
+    "analysisScope": "HR & Quality Management Modules",
+    "overallCompliance": "35%",
+    "complianceStatus": "PARTIAL"
+  },
+  "modules": [
+    {
+      "moduleName": "Employee Master & Credentialing",
+      "existingModule": "backend/models/employee.model.js",
+      "complianceStatus": "PARTIAL",
+      "compliancePercentage": 40,
+      "nabhRequirement": "HR.3 - Credentialing & Privileging, HR.8 - Staff Records",
+      "existingFeatures": [
+        "Basic employee profile",
+        "Education array (degree, institution, yearOfCompletion, percentage, grade)",
+        "Certifications array (name, issuer, issueDate, expiryDate, certificateNumber, certificateFile)",
+        "Documents array (type, name, file, uploadedAt)",
+        "History tracking for changes",
+        "Change requests workflow"
+      ],
+      "missingFeatures": [
+        "Council registration number & expiry tracking",
+        "Verification status & workflow for credentials",
+        "Auto-alert system for expiring credentials (30/60/90 days)",
+        "Qualification verification workflow (approved_by, verified_at)",
+        "Medical-specific qualification types (MBBS, MD, MS, etc.)",
+        "Document upload mandatory flags per document type",
+        "Credential renewal workflow"
+      ],
+      "requiredEnhancements": [
+        "Add credentialing section to Employee model (councilRegistration, qualificationVerification, credentialDocuments)",
+        "Create CredentialAlert model for expiry tracking",
+        "Add qualification type enum (medical-specific)",
+        "Implement auto-alert service (30/60/90 days before expiry)",
+        "Add verification workflow (verifiedBy, verifiedAt, verificationStatus)",
+        "Add document mandatory flags"
+      ],
+      "priority": "HIGH"
+    },
+    {
+      "moduleName": "Training & Competency Management",
+      "existingModule": "NOT_FOUND",
+      "complianceStatus": "MISSING",
+      "compliancePercentage": 0,
+      "nabhRequirement": "HR.4 - Orientation & Training",
+      "existingFeatures": [
+        "Onboarding module exists (but no continuous training)"
+      ],
+      "missingFeatures": [
+        "Training module (complete)",
+        "Mandatory training programs (BLS, ACLS, Infection Control, Fire Safety, etc.)",
+        "Training records (attendance, assessment, certificates)",
+        "Competency matrix (role-based, department-specific)",
+        "Competency assessment tracking",
+        "Training effectiveness evaluation",
+        "Training expiry & renewal workflow",
+        "NABH evidence tagging for training"
+      ],
+      "requiredEnhancements": [
+        "Create TrainingProgram model (training types, validity, mandatory flags)",
+        "Create TrainingRecord model (employee, program, date, attendance, score, certificate)",
+        "Create CompetencyMatrix model (role, department, competency requirements)",
+        "Create CompetencyAssessment model (employee, competency, assessment date, status)",
+        "Create TrainingEffectiveness model (pre/post assessments, performance tracking)",
+        "Implement training expiry & renewal workflow",
+        "Build NABH evidence tagging system"
+      ],
+      "priority": "HIGH"
+    },
+    {
+      "moduleName": "Duty Roster & Staffing Adequacy",
+      "existingModule": "backend/models/shiftAssignment.model.js",
+      "complianceStatus": "PARTIAL",
+      "compliancePercentage": 50,
+      "nabhRequirement": "HR.1 - Human Resource Planning",
+      "existingFeatures": [
+        "Shift assignment system",
+        "Shift rotation support",
+        "Roster publishing (draft/published)",
+        "Conflict detection (rest hours, duplicates)",
+        "Roster viewing by employee/department/date range",
+        "Manual override support"
+      ],
+      "missingFeatures": [
+        "Minimum staffing rules configuration",
+        "Automated staffing adequacy validation",
+        "Multi-level roster approval workflow",
+        "Roster lock/unlock mechanism",
+        "Roster deviation logging & analysis",
+        "Continuity of care tracking",
+        "Compliance reporting"
+      ],
+      "requiredEnhancements": [
+        "Create MinimumStaffingRule model (department, shift, role, minimumCount)",
+        "Add approvalWorkflow to ShiftAssignment (status: draft/pending_approval/approved/locked)",
+        "Add approvedBy, approvedAt, lockStatus fields",
+        "Create RosterDeviation model (date, employee, reason, impact, approvedBy)",
+        "Implement staffing adequacy validation service",
+        "Add roster compliance reporting endpoints"
+      ],
+      "priority": "HIGH"
+    },
+    {
+      "moduleName": "Doctor Privileging & Scope of Practice",
+      "existingModule": "NOT_FOUND",
+      "complianceStatus": "MISSING",
+      "compliancePercentage": 0,
+      "nabhRequirement": "HR.3 - Credentialing & Privileging",
+      "existingFeatures": [],
+      "missingFeatures": [
+        "Privilege categories (general, procedure, specialty-specific)",
+        "Privilege request & approval workflow",
+        "Privileging Committee review system",
+        "Privilege validity & renewal tracking",
+        "Scope of practice documentation",
+        "Privilege revocation workflow",
+        "Audit trail for privileging"
+      ],
+      "requiredEnhancements": [
+        "Create PrivilegeCategory model (category name, description, requirements)",
+        "Create DoctorPrivilege model (doctor, privileges[], status, validFrom, validTo, approvedBy)",
+        "Create PrivilegeRequest model (doctor, requestedPrivileges[], status, committeeReview)",
+        "Create PrivilegeCommittee model (members, meetingDate, decisions)",
+        "Implement privilege expiry & renewal workflow",
+        "Build privilege revocation workflow",
+        "Add NABH evidence tagging"
+      ],
+      "priority": "HIGH"
+    },
+    {
+      "moduleName": "Occupational Health & Safety",
+      "existingModule": "NOT_FOUND",
+      "complianceStatus": "MISSING",
+      "compliancePercentage": 0,
+      "nabhRequirement": "HR.6 - Staff Health & Safety",
+      "existingFeatures": [],
+      "missingFeatures": [
+        "Immunization tracking (HBV, TT, COVID, Influenza, MMR, Varicella)",
+        "Annual health checkup records",
+        "Occupational exposure logs (needle-stick, blood/body fluid, chemical, radiation)",
+        "Incident reporting & investigation",
+        "Fitness certificate tracking",
+        "PEP (Post-Exposure Prophylaxis) tracking",
+        "Compliance reporting"
+      ],
+      "requiredEnhancements": [
+        "Create ImmunizationRecord model (employee, vaccineType, doseNumber, date, nextDueDate, certificateFile)",
+        "Create HealthCheckup model (employee, checkupDate, reportFile, fitnessStatus, restrictions, nextDueDate)",
+        "Create OccupationalExposure model (employee, exposureType, incidentDate, incidentDetails, PEP, followUp)",
+        "Create IncidentReport model (employee, incidentType, severity, description, investigation, CAPA, status)",
+        "Implement expiry & due date alerts",
+        "Build compliance reporting",
+        "Add NABH evidence tagging"
+      ],
+      "priority": "HIGH"
+    },
+    {
+      "moduleName": "Grievance & Disciplinary Management",
+      "existingModule": "backend/models/grievance.model.js",
+      "complianceStatus": "PARTIAL",
+      "compliancePercentage": 40,
+      "nabhRequirement": "HR.7 - Grievance Management",
+      "existingFeatures": [
+        "Basic grievance model (employee, category, subject, description, priority, status)",
+        "Assignment to user (assignedTo)",
+        "Resolution tracking (resolution, resolvedAt, resolvedBy)",
+        "Attachments & comments",
+        "Status workflow (open/in_progress/resolved/closed)"
+      ],
+      "missingFeatures": [
+        "Confidentiality flags & access control",
+        "Enquiry committee workflow",
+        "Disciplinary action tracking & evidence",
+        "Response time SLA tracking (48-hour acknowledgment, 30-day resolution)",
+        "Grievance closure evidence workflow",
+        "Compliance reporting"
+      ],
+      "requiredEnhancements": [
+        "Add isConfidential, accessRestrictedTo fields to Grievance model",
+        "Add enquiryCommittee array (members, formationDate, reportFile)",
+        "Create DisciplinaryAction model (grievance, actionType, actionDate, evidence, approvedBy)",
+        "Add acknowledgedAt, acknowledgedBy, slaDeadline fields",
+        "Implement SLA tracking & alerts",
+        "Build compliance reporting",
+        "Add NABH evidence tagging"
+      ],
+      "priority": "MEDIUM"
+    },
+    {
+      "moduleName": "Audit Trail & Evidence Management",
+      "existingModule": "backend/models/auditLog.model.js",
+      "complianceStatus": "PARTIAL",
+      "compliancePercentage": 30,
+      "nabhRequirement": "Quality.1 - Quality Management System",
+      "existingFeatures": [
+        "Basic audit log (userId, userEmail, action, resource, ipAddress, userAgent, timestamp)",
+        "Audit middleware exists",
+        "Request body tracking",
+        "Some models have history arrays (Employee, Resignation)"
+      ],
+      "missingFeatures": [
+        "Field-level change tracking (comprehensive)",
+        "Soft delete implementation (many models allow hard delete)",
+        "NABH clause mapping system",
+        "Evidence package generation (PDF/Excel)",
+        "Compliance percentage calculation",
+        "IST timezone enforcement",
+        "Audit log retention policy"
+      ],
+      "requiredEnhancements": [
+        "Enhance audit middleware to capture field-level changes",
+        "Implement soft delete for all critical models (add isDeleted, deletedAt, deletedBy)",
+        "Create NABHClause model (clause code, description, module mapping)",
+        "Create NABHEvidence model (clause, evidenceType, recordId, exportPackage)",
+        "Build evidence package generation service (PDF/Excel)",
+        "Implement compliance dashboard (compliance %, missing evidence, expired credentials)",
+        "Add IST timezone support & validation",
+        "Implement audit log retention & archival"
+      ],
+      "priority": "HIGH"
+    },
+    {
+      "moduleName": "Role-Based Access Control (RBAC)",
+      "existingModule": "backend/models/role.model.js, backend/models/permission.model.js",
+      "complianceStatus": "PARTIAL",
+      "compliancePercentage": 50,
+      "nabhRequirement": "Access Control & Security",
+      "existingFeatures": [
+        "Role model (name, code, permissions[], isSystemRole, isActive)",
+        "Permission model (name, code, module, action, isActive)",
+        "Permission-based authorization middleware",
+        "Role-based authorization",
+        "Basic roles: admin, hr, employee"
+      ],
+      "missingFeatures": [
+        "Healthcare-specific roles (Quality Manager, Medical Superintendent, Department HOD)",
+        "Approval authority limits (hierarchical approvals)",
+        "Evidence export permissions",
+        "Department-level data filtering",
+        "Confidential access control",
+        "Permission modules for new NABH modules (training, privileging, occupational health)"
+      ],
+      "requiredEnhancements": [
+        "Add healthcare-specific roles (Quality Manager, Medical Superintendent, Department HOD)",
+        "Add permission modules: training, competency, privileging, occupational_health, credentialing, nabh_evidence",
+        "Implement approval authority limits (hierarchical permissions)",
+        "Add department-level data filtering middleware",
+        "Implement confidential access control",
+        "Build permission matrix UI for role management",
+        "Add evidence export permissions"
+      ],
+      "priority": "MEDIUM"
+    }
+  ],
+  "summary": {
+    "totalModules": 8,
+    "presentModules": 5,
+    "missingModules": 3,
+    "fullyCompliant": 0,
+    "partiallyCompliant": 5,
+    "missingCompliant": 3,
+    "overallCompliancePercentage": 35
+  },
+  "priorityRanking": {
+    "priority1_critical": [
+      "Training & Competency Management",
+      "Credentialing Enhancement",
+      "Occupational Health & Safety",
+      "Audit Trail Enhancement",
+      "Duty Roster Enhancement"
+    ],
+    "priority2_important": [
+      "Doctor Privileging",
+      "Grievance Enhancement",
+      "RBAC Enhancement"
+    ]
+  },
+  "nabhComplianceChecklist": {
+    "HR.1_Human_Resource_Planning": {
+      "status": "PARTIAL",
+      "checks": {
+        "employee_master_exists": true,
+        "department_staffing_adequacy": "needs_enhancement",
+        "minimum_staffing_rules": false
+      }
+    },
+    "HR.2_Recruitment_Selection": {
+      "status": "COMPLIANT",
+      "checks": {
+        "recruitment_module_exists": true,
+        "onboarding_module_exists": true,
+        "credentialing_verification": "needs_enhancement"
+      }
+    },
+    "HR.3_Credentialing_Privileging": {
+      "status": "PARTIAL",
+      "checks": {
+        "basic_credentialing_exists": true,
+        "medical_council_registration": false,
+        "privileging_system": false,
+        "verification_workflow": false
+      }
+    },
+    "HR.4_Orientation_Training": {
+      "status": "PARTIAL",
+      "checks": {
+        "onboarding_exists": true,
+        "continuous_training_module": false,
+        "mandatory_training_tracking": false,
+        "competency_matrix": false,
+        "training_effectiveness": false
+      }
+    },
+    "HR.5_Performance_Appraisal": {
+      "status": "COMPLIANT",
+      "checks": {
+        "performance_review_module_exists": true,
+        "competency_assessment": "needs_enhancement"
+      }
+    },
+    "HR.6_Staff_Health_Safety": {
+      "status": "MISSING",
+      "checks": {
+        "immunization_tracking": false,
+        "health_checkup_records": false,
+        "occupational_exposure_logs": false,
+        "incident_reporting": false
+      }
+    },
+    "HR.7_Grievance_Management": {
+      "status": "PARTIAL",
+      "checks": {
+        "grievance_module_exists": true,
+        "enquiry_workflow": false,
+        "disciplinary_action_tracking": false,
+        "sla_tracking": false
+      }
+    },
+    "HR.8_Staff_Records": {
+      "status": "PARTIAL",
+      "checks": {
+        "employee_master_exists": true,
+        "credentialing_records": "needs_enhancement",
+        "training_records": false,
+        "health_records": false
+      }
+    },
+    "Quality.1_Quality_Management": {
+      "status": "PARTIAL",
+      "checks": {
+        "audit_trail_exists": true,
+        "nabh_evidence_generation": false,
+        "compliance_dashboard": false,
+        "quality_manager_role": false
+      }
+    }
+  },
+  "nextSteps": [
+    "Review & Approval: Stakeholder review of this gap analysis",
+    "PHASE 2: Data model enhancements (schema design)",
+    "PHASE 3: Module-wise implementation plan",
+    "PHASE 4: RBAC enhancement",
+    "PHASE 5: NABH Audit & Evidence Mode",
+    "PHASE 6: Non-functional requirements (soft delete, IST, retention)"
+  ]
+}
+

@@ -1,0 +1,28 @@
+{
+  "appId": "com.vaaltic.hrms",
+  "appName": "vaaltic HRMS",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "buildOptions": {
+      "releaseType": "APK"
+    }
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "launchAutoHide": true,
+      "backgroundColor": "#2563eb",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": true,
+      "androidSpinnerStyle": "large",
+      "spinnerColor": "#ffffff",
+      "splashFullScreen": true,
+      "splashImmersive": true
+    }
+  }
+}
+
